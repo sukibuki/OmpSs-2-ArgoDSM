@@ -51,7 +51,7 @@ int main(int argc, char* argv[])
 	//going to optimized result func
         gettimeofday(&start, NULL);
         for(int i=0; i<length; i+=length/8){
-		    #pragma oss task //inout(optresdata[i;length/8]) label(forloop)
+		    #pragma oss task inout(optresdata[i;length/8]) label(forloop)
 		        for(int j=i; j<i+length/8; ++j){
                         	optresdata[j] = result(optresdata[j], j);
 		        }
